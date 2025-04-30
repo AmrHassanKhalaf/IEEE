@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>تسجيل حضور Bootcamp IEEE 2025</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+    
+<body>
+    <!-- الشعار مع تأثير متحرك -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="title">IEEE Bootcamp 2025</h1>
+            <p class="subtitle">سجّل حضورك الآن واحصل على شهادة معتمدة!</p>
+        </div>
+    </header>
+
+    <!-- النموذج بتصميم حديث -->
+    <div class="form-container">
+        <div class="form-card">
+            <form action="/submit" method="POST" id="attendanceForm">
+                <!-- حقل الاسم -->
+                <div class="input-group">
+                    <i class="fas fa-user icon"></i>
+                    <input 
+        type="text" 
+        name="name" 
+        placeholder="Full Name" 
+        required
+        class="fullname-input" 
+    >
+                </div>
+
+                <!-- قائمة اللجان -->
+                <div class="input-group">
+                    <i class="fas fa-users icon"></i>
+                    <select name="committee" required>
+                        <option value="" disabled selected>Committee</option>
+                        <option value="GNC">GNC</option>
+                        <option value="AI">AI</option>
+                        <option value="Power & Electronics">Power & Electronics</option>
+                        <option value="Astronomy">Astronomy</option>
+                        <option value="Frontend">Frontend</option>
+                        <option value="Backend">Backend</option>
+                        <option value="Data Analysis">Data Analysis</option>
+                        <option value="Embedded">Embedded</option>
+                        <option value="Cyber Security">Cyber Security</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="PR">PR</option>
+                        <option value="Graphics">Graphics</option>
+                        <option value="Logistics">Logistics</option>
+                        <option value="HR">HR</option>
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                    </select>
+                </div>
+
+                <!-- قائمة الجلسات -->
+                <div class="input-group">
+                    <i class="fas fa-calendar-alt icon"></i>
+                    <select name="session_attended" required>
+                        <option value="" disabled selected>Select Session</option>
+                    <option value="Persuasion and Negotiation Skills (Wednesday, 4-6 PM)">Persuasion and Negotiation Skills (Wednesday, 4-6 PM)</option>
+                    <option value="How to Learn & Start in Any Field (Especially Graphic Design) (Thursday, 12-2 PM)">How to Learn & Start in Any Field (Especially Graphic Design) (Thursday, 12-2 PM)</option>
+                    <option value="CV Writing & LinkedIn Optimization (Thursday, 2-4 PM)">CV Writing & LinkedIn Optimization (Thursday, 2-4 PM)</option>
+                    <option value="Presentation Skills (Thursday, 4-6 PM)">Presentation Skills (Thursday, 4-6 PM)</option>
+                    <option value="Microsoft Office Skills (Word, Excel, PowerPoint) (Saturday, 12-2 PM)">Microsoft Office Skills (Word, Excel, PowerPoint) (Saturday, 12-2 PM)</option>
+                    <option value="Digital Presence on Social Media (Saturday, 2-4 PM)">Digital Presence on Social Media (Saturday, 2-4 PM)</option>
+                </select>
+                    </select>
+                </div>
+
+                <!-- زر الإرسال مع تأثيرات -->
+                <button type="submit" class="glow-button">
+                    <i class="fas fa-paper-plane"></i>
+                    تأكيد الحضور
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- الرسومات المتحركة -->
+    <div class="animated-bg"></div>
+    <script>
+        document.getElementById('attendanceForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            
+            try {
+                const response = await fetch('/submit', {
+                    method: 'POST',
+                    headers: { // أضف هنا
+                        'User-Agent': 'Custom-Agent',
+                        'ngrok-skip-browser-warning': 'true'
+                    },
+                    body: formData
+                });
+                const result = await response.json();
+                
+                if (response.ok) {
+                    // توجيه إلى الصفحة التحفيزية بعد 2 ثانية
+                    setTimeout(() => {
+                        window.location.href = '/amr-hassan'; // أو '/amr-hassan.html'
+                    }, 2000);
+                    alert("جاري توجيهك إلى الرسالة التحفيزية...");
+                } else {
+                    alert(`خطأ: ${result.error}`);
+                }
+            } catch (error) {
+                alert("حدث خطأ في الاتصال بالخادم ❌");
+            }
+        });
+    </script>
+</body>
+</html>

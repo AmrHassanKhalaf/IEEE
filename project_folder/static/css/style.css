@@ -1,0 +1,145 @@
+/* أنماط عامة */
+:root {
+    --primary: #2A5C82;
+    --secondary: #5BA4E6;
+    --accent: #FF6B6B;
+    --gradient: linear-gradient(45deg, #007bff, #6610f2);
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* تصميم الهيدر */
+.hero {
+    background: var(--gradient);
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    transform: skewY(-3deg);
+}
+
+.title {
+    color: white;
+    font-size: 3.5em;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+.subtitle {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.2em;
+}
+
+/* تصميم النموذج */
+.form-container {
+    max-width: 700px;
+    margin: -50px auto 0;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.form-card {
+    background: rgba(255,255,255,0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* ملف static/css/style.css */
+
+.fullname-input {
+    width: 100%; /* يشغل كامل المساحة المتاحة */
+    max-width: 200px; /* أقصى عرض مسموح */
+    height: 35px; /* ارتفاع الحقل */
+    padding: 10px; /* مساحة داخلية */
+    font-size: 16px; /* حجم النص */
+    border: 1px solid #007bff; /* لون الحدود */
+    border-radius: 8px; /* زوايا مدورة */
+    margin: 8px 0; /* هامش خارجي */
+}
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-group .icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    font-size: 1.2em;
+}
+
+input, select {
+    width: 100%;
+    padding: 15px 20px 15px 50px;
+    border: 2px solid #e0e7ff;
+    border-radius: 12px;
+    font-size: 1.1em;
+    transition: all 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 15px rgba(91, 164, 230, 0.2);
+}
+
+/* تصميم الزر */
+.glow-button {
+    background: var(--gradient);
+    color: white;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto 0;
+}
+
+.glow-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,123,255,0.3);
+}
+
+/* الخلفية المتحركة */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"><path d="M250 0c-138.07 0-250 111.93-250 250s111.93 250 250 250 250-111.93 250-250S388.07 0 250 0z" fill="%235BA4E6" fill-opacity="0.05"/></svg>');
+    animation: move 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes move {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-50%, -50%); }
+}
